@@ -57,10 +57,12 @@ public class DownloadImage extends Fragment implements Runnable{
                 final Bitmap image= BitmapFactory.decodeStream(inputStream);
                 inputStream.close();
                 httpURLConnection.disconnect();
-                getActivity().runOnUiThread(new Runnable() {
+
+                imageView.post(new Runnable() {
                     @Override
                     public void run() {
                         imageView.setImageBitmap(image);
+
                     }
                 });
 
