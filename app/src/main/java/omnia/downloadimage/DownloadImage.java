@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,7 @@ public class DownloadImage extends Fragment implements Runnable{
     EditText url;
     String urlStr;
     ImageView imageView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +35,6 @@ public class DownloadImage extends Fragment implements Runnable{
         url=(EditText)v.findViewById(R.id.url);
         Button download=(Button)v.findViewById(R.id.download);
         imageView=(ImageView)v.findViewById(R.id.imageView);
-        Log.e("jjjjj","jjjjjjj");
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,13 +42,11 @@ public class DownloadImage extends Fragment implements Runnable{
                 thread.start();
             }
         });
-
         return v;
     }
-//  http://images.all-free-download.com/images/graphiclarge/curious_baby_193909.jpg
+
     @Override
     public void run() {
-        Log.e("omnia","thread 1");
         urlStr=url.getText().toString();
         if(!urlStr.isEmpty()){
             try {
@@ -66,7 +63,7 @@ public class DownloadImage extends Fragment implements Runnable{
                         imageView.setImageBitmap(image);
                     }
                 });
-                Log.e("bitmap","finish");
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
