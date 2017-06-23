@@ -58,13 +58,13 @@ public class DownloadImage extends Fragment implements Runnable{
                 inputStream.close();
                 httpURLConnection.disconnect();
 
-                imageView.post(new Runnable() {
+                imageView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         imageView.setImageBitmap(image);
 
                     }
-                });
+                },5000);
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
